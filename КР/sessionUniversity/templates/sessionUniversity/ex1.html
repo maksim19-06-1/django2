@@ -1,0 +1,29 @@
+{% extends "sessionUniversity/layout.html" %}
+
+{% block body %}
+<h1>Задание 1</h1>
+<p>Вывести полную информацию об экзамене по предмету. Название
+предмета вводится с помощью поля select на основании таблицы Subject</p>
+
+<select  class="form-select" style="max-width: 300px;" name="select" onchange="document.location.replace('http://127.0.0.1:8000/ex1/'+value)"> 
+	<option selected>Выберите предмет</option>
+	{% for exam in sessionUniversity %}
+	  <option value="{{exam.id}}">{{exam.name}}</option>
+	{% endfor %}
+</select>
+	{% if exams %}
+		<h2>Полную информацию об экзамене </h2>
+		{% for exam in exams %}
+			{% if exam.subject_id == id %}
+				
+				<ul class="list-group" style="max-width: 300px;">
+					<li class="list-group-item">Subject: {{ exam.subject.name }}</li>
+					<li class="list-group-item">Student: {{ exam.student.firstName }}</li>
+					<li class="list-group-item">Mark: {{ exam.mark }} бал.</li>
+					<li class="list-group-item">Date: {{ exam.date|date:"Y-m-d" }} </li>
+				</ul>
+<br>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+{% endblock %}

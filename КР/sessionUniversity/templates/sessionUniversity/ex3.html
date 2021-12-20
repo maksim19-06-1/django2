@@ -1,0 +1,31 @@
+{% extends "sessionUniversity/layout.html" %}
+
+{% block body %}
+<h1>Задание 3</h1>
+<p>Вывести в таблицу всю информацию о первых 5 экзаменах.</p>
+
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Subject</th>
+      <th scope="col">Student</th>
+      <th scope="col">Mark</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for exam in exams %}
+	<tr>
+		<td>{{ exam.subject.name }}</td>
+		<td>{{ exam.student.firstName }}</td>
+		<td>{{ exam.mark }}</td>
+		<td>{{ exam.date|date:"Y-m-d" }}</td>
+	</tr>
+	{% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

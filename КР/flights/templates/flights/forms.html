@@ -1,0 +1,18 @@
+{% extends "sessionUniversity/layout.html" %}
+
+{% block body %}
+    <h1>Forms</h1>
+    <form action="{% url 'forms' %}" method="POST">
+        {% csrf_token %}
+        <h2>Flight</h2>
+        <p>{{ form}}</p>
+        <h2>Airport</h2>
+        <p>{{form_air}}</p>
+       
+        <input type="submit" value="Submit" />
+      </form>
+
+
+
+
+{% endblock %}

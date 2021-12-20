@@ -1,0 +1,12 @@
+{% extends "sessionUniversity/layout.html" %}
+
+{% block body %}
+<h1>Exam {{ exam.id }}</h1>
+<ul>
+<li>Subject: {{ exam.subject.name }}</li>
+<li>Student: {{ exam.student }}</li>
+<li>Mark: {{ exam.mark }} minutes</li>
+<li>Date: {{ exam.date }} minutes</li>
+</ul>
+<a href="{% url 'index' %}">All Exam</a>
+{% endblock %}

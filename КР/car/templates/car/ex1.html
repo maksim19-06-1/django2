@@ -1,0 +1,36 @@
+{% extends "car/layout.html" %}
+
+{% block body %}
+<h1>Задание 1</h1>
+<p>Додати функцію для виведення на веб-сторінку інформації про автомобілі
+певної фірми-виробника (фірму обираємо за допомогою поля select по
+записам із таблиці Manufacturer на другій веб-сторінці).</p>
+
+<select  class="form-select" style="max-width: 300px;" name="select" onchange="document.location.replace('http://127.0.0.1:8000/ex1/'+value)"> 
+	<option selected>Выберите фирму</option>
+	{% for exam in sessionUniversity %}
+	  <option value="{{exam.id}}">{{exam.name}}</option>
+	{% endfor %}
+</select>
+	{% if exams %}
+		<h2>Інформації про автомобілі:</h2>
+		{% for exam in exams %}
+			{% if exam.manufacturer_id == id %}
+				
+				<ul class="list-group" style="max-width: 300px;">
+					<li class="list-group-item">Name: {{ exam.name }}</li>
+					<li class="list-group-item">Manufacturer: {{ exam.manufacturer.name }} ({{ exam.manufacturer.yearFoundation|date:"Y" }} рік)</li>
+					<li class="list-group-item">Year: {{ exam.year|date:"Y" }} рік</li>
+					<li class="list-group-item">Price: {{ exam.price }} €</li>
+					<li class="list-group-item">Weight: {{ exam.weight }} </li>
+					{% if exam.euro5 %}
+						<li class="list-group-item">Euro5: Так </li>
+					{% else %}
+						<li class="list-group-item">Euro5: Ні </li>
+					{% endif %}
+				</ul>
+<br>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+{% endblock %}

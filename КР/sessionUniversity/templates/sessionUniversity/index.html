@@ -1,0 +1,10 @@
+{% extends "sessionUniversity/layout.html" %}
+
+{% block body %}
+<h1>Exam:</h1>
+<ul>
+{% for exam in sessionUniversity %}
+<li><a href='exam/{{exam.id}}/'>Exam {{ exam.id }}</a>: {{ exam.subject }} - {{ exam.student }} - {{ exam.mark }} - {{ exam.date }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

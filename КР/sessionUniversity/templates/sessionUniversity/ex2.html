@@ -1,0 +1,32 @@
+{% extends "sessionUniversity/layout.html" %}
+
+{% block body %}
+<h1>Задание 2</h1>
+<p>Задать название предмета и дату экзамена. Вывести фамилии студентов,
+которые сдавали этот экзамен.</p>
+<form method="get" action="">
+	<select name="select" class="form-select" style="max-width: 300px;"> 
+		<option selected>Выберите предмет</option>
+		{% for exam in sessionUniversity %}
+		  <option value="{{exam.id}}">{{exam.name}}</option>
+		{% endfor %}
+	</select><br>
+	<input class="form-control" style="max-width: 300px;" name="date" type="date" placeholder="YYYY-MM-DD"><br>
+	<button type="submit" class="btn btn-primary">Найти</button>
+</form>
+
+	{% if id %}
+		<h2>Студенты:</h2>
+		<ul class="list-group" style="max-width: 300px;">
+		{% for exam in exams %}
+			{% if exam.subject_id == id and dateEx == exam.date|date:"Y-m-d" %}
+				
+		
+						<li class="list-group-item">Student: {{ exam.student.firstName }} {{ exam.student.lastName }}</li>
+			{% else %}
+				
+			{% endif %}
+		{% endfor %}
+		</ul>
+	{% endif %}
+{% endblock %}
